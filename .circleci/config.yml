@@ -1,0 +1,19 @@
+version: 2
+jobs:
+  build:
+    docker:
+      - image: circleci/python:3.6.1    
+    steps:
+      - checkout
+  test-pytest:
+    docker:
+      - image: circleci/python:3.6.1
+    steps:
+        - checkout
+        - run: sudo pip install -U pytest
+        #- run: pytest
+workflows:
+  version: 2
+  test:
+    jobs:
+      - test-pytest
